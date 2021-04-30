@@ -266,6 +266,9 @@ UndistorterFOV::UndistorterFOV(const char* configFileName)
 	Korg(1,1) = inputCalibration[1] * in_height;
 	Korg(0,2) = inputCalibration[2] * in_width-0.5;
 	Korg(1,2) = inputCalibration[3] * in_height-0.5;
+
+	printf("new K: %f %f %f %f\n",Krect(0,0), Krect(1,1), Krect(0,2), Krect(1,2));
+	printf("old K: %f %f %f %f\n",Korg(0,0), Korg(1,1), Korg(0,2), Korg(1,2));
 }
 
 

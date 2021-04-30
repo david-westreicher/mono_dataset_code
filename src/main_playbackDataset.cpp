@@ -72,12 +72,15 @@ int main( int argc, char** argv )
 
 	if(argc > 2)
 	{
+	    std::string output_folder = argv[2];
 		printf("Saving undistorted Dataset to here!\n");
+        std::cout << output_folder;
 		for(int i=0;i<reader->getNumImages();i++)
 		{
 			ExposureImage* I = reader->getImage(i, true, false, false, false);
 			char buf[1000];
-			snprintf(buf, 1000, "%05d.jpg", i);
+			snprintf(buf, 1000, (output_folder + "img_%05d.jpg").c_str(), i);
+		    printf(buf);
 			cv::imwrite(buf, cv::Mat(I->h, I->w, CV_32F, I->image));
 			delete I;
 		}
